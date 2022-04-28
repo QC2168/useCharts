@@ -12,8 +12,8 @@ interface Props {
 }
 
 withDefaults(defineProps<Props>(), {
-    width: () => 400,
-    height: () => 400
+    width: () => 300,
+    height: () => 300
 })
 const option: EChartsOption = {
     xAxis: {
@@ -37,7 +37,7 @@ const chartEl = ref<HTMLDivElement | null>(null)
 
 const {
     setOption
-} = useChart(chartEl as Ref<HTMLDivElement>)
+} = useChart(chartEl as Ref<HTMLDivElement>,true)
 
 onMounted(() => {
     setOption(option)
