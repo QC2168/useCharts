@@ -1,8 +1,8 @@
 import { nextTick, onMounted, onUnmounted, Ref, unref } from "vue";
 import type { EChartsOption } from 'echarts';
 import echarts from "./lib";
-import { throttle } from "lodash-es";
-export default function useChart(elRef: Ref<HTMLDivElement>, animation: boolean = false) {
+
+export default function useChart(elRef: Ref<HTMLDivElement>, autoChartSize = false, animation: boolean = false) {
 
     // echart实例
     let chartInstance: echarts.ECharts | null = null;
@@ -10,27 +10,22 @@ export default function useChart(elRef: Ref<HTMLDivElement>, animation: boolean 
     // 初始化echart
     const initCharts = () => {
         const el = unref(elRef)
-        console.log(elRef);
         if (!el || !unref(el)) {
             return
         }
         chartInstance = echarts.init(el);
-
     }
 
     // 更新/设置配置
     const setOption = (option: EChartsOption) => {
         nextTick(() => {
-            setTimeout(() => {
-                if (!chartInstance) {
-                    initCharts();
-                    if (!chartInstance) return;
-                }
+            if (!chartInstance) {
+                initCharts();
+                if (!chartInstance) return;
+            }
 
-                console.log(chartInstance);
-
-                chartInstance.setOption(option)
-            }, 0);
+            chartInstance.setOption(option)
+            hideLoading()
         })
 
     }
@@ -52,13 +47,28 @@ export default function useChart(elRef: Ref<HTMLDivElement>, animation: boolean 
     function watchEl() {
         // 给元素添加过渡
         if (animation) { elRef.value.style.transition = 'width 1s, height 1s' }
-        const resizeObserver = new ResizeObserver(throttle((entries => resize()), 100));
+        const resizeObserver = new ResizeObserver((entries => resize()))
         resizeObserver.observe(elRef.value);
     }
 
+    // 显示加载状
+    function showLoading() {
+        if (!chartInstance) {
+            initCharts();
+        }
+        chartInstance?.showLoading()
+    }
+    // 显示加载状
+    function hideLoading() {
+        if (!chartInstance) {
+            initCharts();
+        }
+        chartInstance?.hideLoading()
+    }
+
     onMounted(() => {
-        window.addEventListener('resize', throttle(resize, 1000))
-        watchEl()
+        window.addEventListener('resize', resize)
+        if (autoChartSize) watchEl();
     })
 
     onUnmounted(() => {
@@ -67,6 +77,8 @@ export default function useChart(elRef: Ref<HTMLDivElement>, animation: boolean 
 
     return {
         setOption,
-        getInstance
+        getInstance,
+        showLoading,
+        hideLoading
     }
 }
