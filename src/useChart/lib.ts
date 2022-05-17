@@ -27,7 +27,6 @@ import {
     GraphicComponent
 } from 'echarts/components';
 
-import { SVGRenderer } from 'echarts/renderers';
 
 echarts.use([
     LegendComponent,
@@ -42,7 +41,6 @@ echarts.use([
     PieChart,
     MapChart,
     RadarChart,
-    SVGRenderer,
     PictorialBarChart,
     RadarComponent,
     ToolboxComponent,

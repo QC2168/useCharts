@@ -1,9 +1,12 @@
 import { nextTick, onMounted, onUnmounted, Ref, unref } from "vue";
 import type { EChartsOption } from 'echarts';
 import echarts from "./lib";
-
-export default function useChart(elRef: Ref<HTMLDivElement>, autoChartSize = false, animation: boolean = false) {
-
+import { SVGRenderer, CanvasRenderer } from "echarts/renderers";
+import { RenderType, ThemeType } from "./types";
+export * from './types'
+export default function useChart(elRef: Ref<HTMLDivElement>, autoChartSize = false, animation: boolean = false, render: RenderType = RenderType.SVGRenderer, theme: ThemeType = ThemeType.Default) {
+    // 渲染模式
+    echarts.use(render === RenderType.SVGRenderer ? SVGRenderer : CanvasRenderer)
     // echart实例
     let chartInstance: echarts.ECharts | null = null;
 
@@ -13,7 +16,7 @@ export default function useChart(elRef: Ref<HTMLDivElement>, autoChartSize = fal
         if (!el || !unref(el)) {
             return
         }
-        chartInstance = echarts.init(el);
+        chartInstance = echarts.init(el, theme);
     }
 
     // 更新/设置配置

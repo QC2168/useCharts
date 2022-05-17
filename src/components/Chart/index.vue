@@ -1,35 +1,28 @@
 <template>
-    <div ref="chartEl" :style="{ width: `${width}px`, height: `${height}px` }"></div>
+    <div ref="chartEl" :style="{ width: `${w}px`, height: `${h}px` }"></div>
 </template>
 <script setup lang="ts">
 import { onMounted, Ref, ref, computed, nextTick } from "vue";
 import type { EChartsOption } from 'echarts'
-import useChart from './useChart'
+import useChart, { RenderType, ThemeType } from '../../useChart'
 import axios from 'axios'
 
-interface Props {
-    width?: Number;
-    height?: Number;
-}
+let w = ref<number>(300)
+let h = ref<number>(300)
 
-withDefaults(defineProps<Props>(), {
-    width: () => 300,
-    height: () => 300
-})
-const statusText = ref('获取数据中')
-const status = ref(false)
+setInterval(() => {
+    w.value += 100
+    h.value += 100
+    if (w.value >= 1000) {
+        w.value = 300
+        h.value = 300
+    }
+}, 1000)
+
+// 图表数据
 const barData = ref<number[]>([])
 
 const option = computed<EChartsOption>(() => ({
-    title: {
-        show: barData.value.length === 0 && !status,
-        text: statusText.value,
-        left: 'center',
-        top: 'center',
-        textStyle: {
-            fontSize: 20
-        }
-    },
     xAxis: {
         type: 'category',
         data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
@@ -45,16 +38,14 @@ const option = computed<EChartsOption>(() => ({
         }
     ]
 
-
-
 }))
 
 const chartEl = ref<HTMLDivElement | null>(null)
 
 const {
     setOption,
-    showLoading
-} = useChart(chartEl as Ref<HTMLDivElement>, true, true)
+    showLoading,
+} = useChart(chartEl as Ref<HTMLDivElement>, true, true, RenderType.SVGRenderer, ThemeType.Light)
 
 const getData = async () => {
     try {
@@ -62,15 +53,27 @@ const getData = async () => {
         barData.value = res.data.data;
         setOption(option.value);
     } catch {
-        statusText.value = '获取数据失败'
+        setOption({
+            title: {
+                show: true,
+                text: '获取数据失败',
+                left: 'center',
+                top: 'center',
+                textStyle: {
+                    fontSize: 20
+                }
+            }
+        });
     }
 }
+
+
+
 onMounted(() => {
     nextTick(() => {
         showLoading()
         getData()
     })
-
 })
 
 </script>
