@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@qc2168/use-charts': ^1.0.0
   '@types/echarts': ^4.9.14
   '@types/lodash-es': ^4.17.6
   '@vitejs/plugin-vue': ^2.3.1
@@ -9,6 +10,7 @@ specifiers:
   echart: ^0.1.3
   echarts: ^5.3.2
   mockjs: ^1.1.0
+  rollup: '>=2.42.0 <3.0.0'
   typescript: ^4.5.4
   vite: ^2.9.5
   vite-plugin-mock: ^2.9.6
@@ -16,6 +18,7 @@ specifiers:
   vue-tsc: ^0.34.7
 
 dependencies:
+  '@qc2168/use-charts': 1.0.0
   '@types/lodash-es': 4.17.6
   axios: 0.27.2
   echart: 0.1.3
@@ -27,9 +30,10 @@ devDependencies:
   '@types/echarts': 4.9.14
   '@vitejs/plugin-vue': 2.3.1_vite@2.9.6+vue@3.2.33
   cross-env: 7.0.3
+  rollup: 2.70.2
   typescript: 4.6.3
   vite: 2.9.6
-  vite-plugin-mock: 2.9.6_mockjs@1.1.0+vite@2.9.6
+  vite-plugin-mock: 2.9.6_gvu2g6nthi4haitp4fetawj3u4
   vue-tsc: 0.34.10_typescript@4.6.3
 
 packages:
@@ -60,21 +64,26 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@rollup/plugin-node-resolve/13.3.0:
+  /@qc2168/use-charts/1.0.0:
+    resolution: {integrity: sha512-ProA4gipgbeJ8aI1F/8mqCuiUxGP5Lurz73elUhLMZT04mJ71Ianw5wxtZF6JwWIRk+z/z2dtjsybCPMCmEYaA==}
+    dev: false
+
+  /@rollup/plugin-node-resolve/13.3.0_rollup@2.70.2:
     resolution: {integrity: sha512-Lus8rbUo1eEcnS4yTFKLZrVumLPY+YayBdWXgFSHYhTT2iJbMhoaaBL3xl5NCdeRytErGr8tZ0L71BMRmnlwSw==}
     engines: {node: '>= 10.0.0'}
     peerDependencies:
       rollup: ^2.42.0
     dependencies:
-      '@rollup/pluginutils': 3.1.0
+      '@rollup/pluginutils': 3.1.0_rollup@2.70.2
       '@types/resolve': 1.17.1
       deepmerge: 4.2.2
       is-builtin-module: 3.1.0
       is-module: 1.0.0
       resolve: 1.22.0
+      rollup: 2.70.2
     dev: true
 
-  /@rollup/pluginutils/3.1.0:
+  /@rollup/pluginutils/3.1.0_rollup@2.70.2:
     resolution: {integrity: sha512-GksZ6pr6TpIjHm8h9lSQ8pi8BE9VeubNT0OMJ3B5uZJ8pz73NPiqOtCog/x2/QzM1ENChPKxMDhiQuRHsqc+lg==}
     engines: {node: '>= 8.0.0'}
     peerDependencies:
@@ -83,6 +92,7 @@ packages:
       '@types/estree': 0.0.39
       estree-walker: 1.0.1
       picomatch: 2.3.1
+      rollup: 2.70.2
     dev: true
 
   /@types/echarts/4.9.14:
@@ -1232,14 +1242,14 @@ packages:
     engines: {node: '>= 0.8'}
     dev: false
 
-  /vite-plugin-mock/2.9.6_mockjs@1.1.0+vite@2.9.6:
+  /vite-plugin-mock/2.9.6_gvu2g6nthi4haitp4fetawj3u4:
     resolution: {integrity: sha512-/Rm59oPppe/ncbkSrUuAxIQihlI2YcBmnbR4ST1RA2VzM1C0tEQc1KlbQvnUGhXECAGTaQN2JyasiwXP6EtKgg==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
       mockjs: '>=1.1.0'
       vite: '>=2.0.0'
     dependencies:
-      '@rollup/plugin-node-resolve': 13.3.0
+      '@rollup/plugin-node-resolve': 13.3.0_rollup@2.70.2
       '@types/mockjs': 1.0.6
       chalk: 4.1.2
       chokidar: 3.5.3
