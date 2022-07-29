@@ -1,28 +1,31 @@
 {
-  "name": "echart-no-data",
-  "private": true,
-  "version": "0.0.0",
+  "name": "@qc2168/use-charts",
+  "version": "1.0.0",
+  "description": "Using usecharts can make it easier to create chart components",
+  "main": "dist/index.js",
   "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview",
-    "dev:mock": "cross-env USE_MOCK=true vite"
+    "dev": "rollup -w -c",
+    "build": "rollup -c"
   },
-  "dependencies": {
-    "@types/lodash-es": "^4.17.6",
-    "axios": "^0.27.2",
-    "echart": "^0.1.3",
-    "echarts": "^5.3.2",
-    "mockjs": "^1.1.0",
-    "vue": "^3.2.25"
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "echarts"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
   },
+  "author": "QC2168",
+  "license": "MIT",
   "devDependencies": {
-    "@types/echarts": "^4.9.14",
-    "@vitejs/plugin-vue": "^2.3.1",
-    "cross-env": "^7.0.3",
-    "typescript": "^4.5.4",
-    "vite": "^2.9.5",
-    "vite-plugin-mock": "^2.9.6",
-    "vue-tsc": "^0.34.7"
+    "@rollup/plugin-typescript": "^8.3.4",
+    "@types/echarts": "^4.9.16",
+    "@types/node": "^18.6.2",
+    "echarts": "^5.3.3",
+    "rollup": "^2.77.2",
+    "tslib": "^2.4.0",
+    "typescript": "^4.7.4"
   }
 }
