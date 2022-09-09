@@ -1,6 +1,6 @@
 {
   "name": "@qc2168/use-charts",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Using usecharts can make it easier to create chart components",
   "main": "dist/index.js",
   "scripts": {
@@ -25,9 +25,12 @@
     "@rollup/plugin-typescript": "^8.3.4",
     "@types/echarts": "^4.9.16",
     "@types/node": "^18.6.2",
-    "echarts": "^5.3.3",
     "rollup": "^2.77.2",
     "tslib": "^2.4.0",
     "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "vue": "^3.2.39",
+    "echarts": "^5.3.3"
   }
 }

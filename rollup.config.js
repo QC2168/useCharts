@@ -6,5 +6,6 @@ export default {
         file: 'dist/index.js',
         format: 'es'
     },
+    external: ['vue','echarts','echarts/renderers','echarts/core','echarts/charts','echarts/components'],
     plugins: [typescript({tsconfig:'./tsconfig.json'})]
 };
