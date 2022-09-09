@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@qc2168/use-charts": "^1.1.0",
+    "@types/axios": "^0.14.0",
     "@types/lodash-es": "^4.17.6",
     "axios": "^0.27.2",
     "echart": "^0.1.3",
