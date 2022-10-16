@@ -13,28 +13,30 @@ Using usecharts can make it easier to create chart components
 📦 Installation
 
 ```
-# pnpm
-pnpm add echart @qc2168/use-charts
+# pnpm (recommend)
+pnpm add echarts @qc2168/use-charts
 
 # yarn
-yarn add echart @qc2168/use-charts
+yarn add echarts @qc2168/use-charts
 
 # npm
-npm install echart @qc2168/use-charts
+npm install echarts @qc2168/use-charts
 
 ```
 
 ## 🤖 Usage
 
 ```typescript
+
 // template
+
 <!-- width height must be provided for element -->
 
 <div ref="chartEl" style="height:200px;width:200px;"><div>
 
 
 // script setup
-
+import useChart from "@qc2168/use-charts"
 //  provide a element
 const chartEl = ref<HTMLDivElement | null>(null)
 
@@ -50,7 +52,7 @@ onMounted(() => {
         showLoading()
         // setOption
         setOption({
-            /*  */
+            /* set data ... */
         })
     })
 })
