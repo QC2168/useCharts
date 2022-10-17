@@ -4,7 +4,7 @@
 <script setup lang="ts">
 import { onMounted, Ref, ref, computed, nextTick } from "vue";
 import type { EChartsOption } from "echarts";
-import useChart from "../../../../dist";
+import useChart from "@qc2168/use-charts";
 import axios from "axios";
 
 let w = ref<number>(300);
