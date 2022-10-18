@@ -59,7 +59,7 @@ onMounted(() => {
 })
 }),
 ```
-
+> example https://github.com/QC2168/useCharts/tree/main/example
 
 ## 🛠️ Argument
 
