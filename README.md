@@ -5,12 +5,13 @@
 Using usecharts can make it easier to create chart components
 
 ## 🌈 Feature
- - auto resize chart
- - Loading effect before rendering
- - custom theme
- - custom renderer
 
-📦 Installation
+- auto resize chart
+- Loading effect before rendering
+- custom theme
+- custom renderer
+
+## 📦 Installation
 
 ```
 # pnpm (recommend)
@@ -58,3 +59,25 @@ onMounted(() => {
 })
 }),
 ```
+
+
+## 🛠️ Argument
+
+| Name    | Description       | Type                  | required |
+| ------- | ----------------- | --------------------- | -------- |
+| elRef   | echart dom        | `Ref<HTMLDivElement>` | `true`     |
+| Options | see options below | `OptionsType`         | `false`    |
+
+### OptionsType
+| Name          | Description               | Type                                               | required | Default                  |
+| ------------- | ------------------------- | -------------------------------------------------- | -------- | ------------------------ |
+| render        | echart render mode        | `RenderType.SVGRenderer/RenderType.CanvasRenderer` | `false`  | `RenderType.SVGRenderer` |
+| autoChartSize | watch chart size changes  | `boolean`                                          | `false`  | `false`                    |
+| animation     | Define transition effects | `AnimationType`                                    | `false`  | `{}`                       |
+| theme         | echart theme              | `ThemeType.Light/ThemeType.Dark/ThemeType.Default` | `false`  | `ThemeType.Default`        |
+
+### AnimationType
+| Name   | Description                                                 | Type    | required | Default |
+| ------ | ----------------------------------------------------------- | ------- | -------- | ------- |
+| enable | set to false to prevent the transition effects from showing | `boolean` | `false`   |         |
+| styles | styles object                                               | `Object`  | `false`   |         |
