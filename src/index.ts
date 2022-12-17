@@ -2,7 +2,7 @@ import { nextTick, onMounted, onUnmounted, unref } from "vue";
 import type { Ref } from "vue";
 import echarts from "./lib";
 import { SVGRenderer, CanvasRenderer } from "echarts/renderers";
-import type { EChartsOption } from "echarts";
+import type { EChartsOption, SetOptionOpts } from "echarts";
 import { RenderType, ThemeType, UseChartsOptionType } from "./types";
 export * from "./types";
 
@@ -31,14 +31,17 @@ export default function useChart(
     };
 
     // 更新/设置配置
-    const setOption = (option: EChartsOption): void => {
+    function setOption(option: EChartsOption,opts: boolean|SetOptionOpts=false, lazyUpdate=false): void{
         nextTick(() => {
             if (!chartInstance) {
                 initCharts();
                 if (!chartInstance) return;
             }
-
-            chartInstance.setOption(option);
+            if(typeof opts ==='boolean'){
+                chartInstance.setOption(option,opts,lazyUpdate);
+            } else if(typeof opts === 'object'){
+                chartInstance.setOption(option,opts);
+            }
             hideLoading();
         });
     };
