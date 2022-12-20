@@ -1,6 +1,6 @@
 {
   "name": "@qc2168/use-charts",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Using usecharts can make it easier to create chart components",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

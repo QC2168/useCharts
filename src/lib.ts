@@ -24,7 +24,8 @@ import {
     VisualMapComponent,
     TimelineComponent,
     CalendarComponent,
-    GraphicComponent
+    GraphicComponent,
+    MarkPointComponent,
 } from 'echarts/components';
 
 
@@ -49,6 +50,7 @@ echarts.use([
     TimelineComponent,
     CalendarComponent,
     GraphicComponent,
+    MarkPointComponent,
     ScatterChart
 ]);
 
