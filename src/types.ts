@@ -1,6 +1,6 @@
 export enum RenderType {
   SVGRenderer = "SVGRenderer",
-  CanvasRenderer = "SVGRenderer",
+  CanvasRenderer = "CanvasRenderer",
 }
 export enum ThemeType {
   Light = "light",
