@@ -30,10 +30,9 @@ npm install echarts @qc2168/use-charts
 ```typescript
 
 // template
-
 <!-- width height must be provided for element -->
-
-<div ref="chartEl" style="height:200px;width:200px;"><div>
+<div ref = "chartEl"
+style = "height:200px;width:200px;" > </div>
 
 
 // script setup
@@ -47,7 +46,6 @@ const {
 } = useChart(chartEl as Ref<HTMLDivElement>)
 
 onMounted(() => {
-    onMounted(() => {
     nextTick(() => {
         // turn on chart loading ~
         showLoading()
@@ -57,27 +55,29 @@ onMounted(() => {
         })
     })
 })
-}),
 ```
+
 > example https://github.com/QC2168/useCharts/tree/main/example
 
 ## 🛠️ Argument
 
 | Name    | Description       | Type                  | required |
-| ------- | ----------------- | --------------------- | -------- |
-| elRef   | echart dom        | `Ref<HTMLDivElement>` | `true`     |
-| Options | see options below | `OptionsType`         | `false`    |
+|---------|-------------------|-----------------------|----------|
+| elRef   | echart dom        | `Ref<HTMLDivElement>` | `true`   |
+| Options | see options below | `OptionsType`         | `false`  |
 
 ### OptionsType
+
 | Name          | Description               | Type                                               | required | Default                  |
-| ------------- | ------------------------- | -------------------------------------------------- | -------- | ------------------------ |
+|---------------|---------------------------|----------------------------------------------------|----------|--------------------------|
 | render        | echart render mode        | `RenderType.SVGRenderer/RenderType.CanvasRenderer` | `false`  | `RenderType.SVGRenderer` |
-| autoChartSize | watch chart size changes  | `boolean`                                          | `false`  | `false`                    |
-| animation     | Define transition effects | `AnimationType`                                    | `false`  | `{}`                       |
-| theme         | echart theme              | `ThemeType.Light/ThemeType.Dark/ThemeType.Default` | `false`  | `ThemeType.Default`        |
+| autoChartSize | watch chart size changes  | `boolean`                                          | `false`  | `false`                  |
+| animation     | Define transition effects | `AnimationType`                                    | `false`  | `{}`                     |
+| theme         | echart theme              | `ThemeType.Light/ThemeType.Dark/ThemeType.Default` | `false`  | `ThemeType.Default`      |
 
 ### AnimationType
-| Name   | Description                                                 | Type    | required | Default |
-| ------ | ----------------------------------------------------------- | ------- | -------- | ------- |
-| enable | set to false to prevent the transition effects from showing | `boolean` | `false`   |         |
-| styles | styles object                                               | `Object`  | `false`   |         |
+
+| Name   | Description                                                 | Type      | required | Default |
+|--------|-------------------------------------------------------------|-----------|----------|---------|
+| enable | set to false to prevent the transition effects from showing | `boolean` | `false`  | `false` |
+| styles | styles object                                               | `Object`  | `false`  | `{}`    |
